@@ -35,10 +35,12 @@ if st.button("Predict"):
         vectorized_input = tfidf_vectorizer.transform([cleaned_input])
         #predict sentiment
         prediction = model.predict(vectorized_input)
+        #get prediction probability
+        prediction_proba = model.predict_proba(vectorized_input)[0]
         #display prediction result
         if prediction[0] == 1:
-            st.success("Prediction: Positive Review 👍")
+            st.success("Prediction: Positive Review 👍 (Confidence : {prediction_proba[1]*100:.2f}%)")
         else:
-            st.error("Prediction: Negative Review 👎")
+            st.error("Prediction: Negative Review 👎 (Confidence : {prediction_proba[0]*100:.2f}%)")
     else:
         st.warning("Please enter some text to analyze.")
