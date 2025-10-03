@@ -39,8 +39,8 @@ if st.button("Predict"):
         prediction_proba = model.predict_proba(vectorized_input)[0]
         #display prediction result
         if prediction[0] == 1:
-            st.success("Prediction: Positive Review 👍 (Confidence : {prediction_proba[1]*100:.2f}%)")
+            st.success(f"Prediction: Positive Review 👍 (Confidence : {prediction_proba[1]*100:.2f}%)")
         else:
-            st.error("Prediction: Negative Review 👎 (Confidence : {prediction_proba[0]*100:.2f}%)")
+            st.error(f"Prediction: Negative Review 👎 (Confidence : {prediction_proba[0]*100:.2f}%)")
     else:
         st.warning("Please enter some text to analyze.")
